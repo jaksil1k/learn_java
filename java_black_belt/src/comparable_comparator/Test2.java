@@ -1,9 +1,6 @@
 package comparable_comparator;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Test2 {
     public static void main(String[] args) {
@@ -11,6 +8,9 @@ public class Test2 {
         Employee emp1 = new Employee(100, "Zaur", "Tregulov", 12345);
         Employee emp2 = new Employee(15, "Ivan", "Petrov", 6542);
         Employee emp3 = new Employee(123, "Ivan", "Sidorov", 8542);
+
+        //have to implement comparable to sort
+        Arrays.sort(new Employee[]{emp1, emp2, emp3});
 
         list.add(emp1);
         list.add(emp2);
@@ -48,6 +48,8 @@ class Employee implements Comparable<Employee> {
 
     @Override
     public int compareTo(Employee emp) {
-        return Integer.compare(this.id, emp.id);
+//        return Integer.compare(this.id, emp.id);
+//        return this.id - emp.id;
+        return this.name.compareTo(emp.name);
     }
 }
