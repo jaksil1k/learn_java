@@ -17,13 +17,14 @@ public class Test2 {
 
         //have to implement comparable to sort
         System.out.println("Before sorting\n" + list);
-        Collections.sort(list, new SalaryComparator());
+        //comparator class passed as 2nd parameter to sort overrides compare to of initial class
+        Collections.sort(list, (o1, o2) -> o1.salary - o2.salary);
         System.out.println("After sorting\n" + list);
 
     }
 }
 
-class Employee /*implements Comparable<Employee>*/ {
+class Employee  implements Comparable<Employee> {
     int id;
     String name;
     String surname;
@@ -46,12 +47,12 @@ class Employee /*implements Comparable<Employee>*/ {
                 '}';
     }
 
-//    @Override
-//    public int compareTo(Employee emp) {
-////        return Integer.compare(this.id, emp.id);
-////        return this.id - emp.id;
-//        return this.name.compareTo(emp.name);
-//    }
+    @Override
+    public int compareTo(Employee emp) {
+//        return Integer.compare(this.id, emp.id);
+//        return this.id - emp.id;
+        return this.name.compareTo(emp.name);
+    }
 }
 
 class SalaryComparator implements Comparator<Employee> {
