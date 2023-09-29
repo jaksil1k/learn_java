@@ -1,4 +1,6 @@
 # learn_java
-I watched udemy courses and wrote what I've learnt
+I watched courses on udemy and repeated after author.
+
 Here courses:
-https://www.udemy.com/course/java-ot-zaura/
+
+Java black belt: https://www.udemy.com/course/java-ot-zaura/
