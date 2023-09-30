@@ -8,9 +8,9 @@ public class ParametrizedMethod {
         //in other word after compilation all objects casts to Object
         List<Integer> list = new ArrayList<>(Arrays.asList(10, 20, 5));
         //List list = new ArrayList();
-        int a = GenMethod.getSecondElement(list);
+//        int a = GenMethod.getSecondElement(list);
         //int a = (Integer)GenMethod.getSecondElement(list);
-        System.out.println(a);
+//        System.out.println(a);
     }
 
     //compilation error here is evidence of type erasure
