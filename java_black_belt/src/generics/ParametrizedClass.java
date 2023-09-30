@@ -2,9 +2,9 @@ package generics;
 
 public class ParametrizedClass {
     public static void main(String[] args) {
-        Info<String> info1 = new Info<>("hello");
-        System.out.println(info1);
-        String s = info1.getValue();
+//        Info<String> info1 = new Info<>("hello");
+//        System.out.println(info1);
+//        String s = info1.getValue();
 
         Info<Integer> info2 = new Info<>(18);
         System.out.println(info2);
@@ -12,7 +12,8 @@ public class ParametrizedClass {
     }
 }
 
-class Info<T> {
+//now we can put only classes which extends Number
+class Info<T extends Number> {
 
     //field with T can not be static
     private final T value;
