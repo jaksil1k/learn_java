@@ -1,6 +1,8 @@
 package collection.set_interface;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class HashSetEx {
@@ -14,5 +16,6 @@ public class HashSetEx {
         System.out.println(set);
         System.out.println(set.size());
         boolean misha = set.contains("Misha");
+        ArrayList<Object> list = new ArrayList<>();
     }
 }
