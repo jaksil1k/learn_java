@@ -1,13 +1,12 @@
 package lambda;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.function.Predicate;
 
 public class StudentInfo {
-    void testStudent(ArrayList<Student> al, StudentChecks sc) {
+    void testStudent(ArrayList<Student> al, Predicate<Student> pr) {
         for (Student s : al) {
-            if (sc.check(s)) {
+            if (pr.test(s)) {
                 System.out.println(s);
             }
         }
@@ -28,17 +27,20 @@ class Test {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
+        Predicate<Student> p1 = student -> student.avgGrade > 7.5;
+        Predicate<Student> p2 = student -> student.sex == 'm';
+//        Collections.sort(students, (s1, s2) -> s1.course - s2.course);
 
-        Collections.sort(students, (s1, s2) -> s1.course - s2.course);
 
-        info.testStudent(students, s -> s.avgGrade < 30);
+        info.testStudent(students, p1.and(p2));
+//        info.testStudent(students, s -> s.avgGrade < 30);
         System.out.println("__________________________");
 
 
     }
 }
 
-interface StudentChecks {
-    boolean check(Student s);
-}
+//interface StudentChecks {
+//    boolean check(Student s);
+//}
 
