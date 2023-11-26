@@ -1,6 +1,7 @@
 package lambda;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class StudentInfo {
@@ -11,29 +12,6 @@ public class StudentInfo {
             }
         }
     }
-
-//    void printStudentsOverGrade(List<Student> al, double grade) {
-//        for (Student s : al){
-//            if (s.avgGrade > grade) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
-//    void printStudentsUnderGrade(List<Student> al, int age) {
-//        for (Student s : al){
-//            if (s.age > age) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
-//
-//    void printStudentsMixCondition(List<Student> al, int age, double grade, char sex) {
-//        for (Student s : al){
-//            if (s.age > age && s.avgGrade > grade && s.sex == sex) {
-//                System.out.println(s);
-//            }
-//        }
-//    }
 }
 class Test {
     public static void main(String[] args) {
@@ -50,20 +28,11 @@ class Test {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
-        info.testStudent(students, new CheckOverGrade());
+
+        Collections.sort(students, (s1, s2) -> s1.course - s2.course);
+
+        info.testStudent(students, s -> s.avgGrade < 30);
         System.out.println("__________________________");
-        info.testStudent(students, new StudentChecks() {
-            @Override
-            public boolean check(Student s) {
-                return s.avgGrade < 30;
-            }
-        });
-        System.out.println("__________________________");
-        info.testStudent(students, (Student s) -> {return s.age < 30;});
-//        System.out.println("__________________________");
-//        info.printStudentsUnderGrade(students, 24);
-//        System.out.println("__________________________");
-//        info.printStudentsMixCondition(students, 20, 9, 'f');
 
 
     }
@@ -73,10 +42,3 @@ interface StudentChecks {
     boolean check(Student s);
 }
 
-class CheckOverGrade implements StudentChecks {
-
-    @Override
-    public boolean check(Student s) {
-        return s.avgGrade > 8;
-    }
-}
