@@ -1,7 +1,9 @@
 package lambda;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Predicate;
+import java.util.function.Function;
 
 public class StudentInfo {
     void testStudent(ArrayList<Student> al, Predicate<Student> pr) {
@@ -27,16 +29,30 @@ class Test {
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
-        Predicate<Student> p1 = student -> student.avgGrade > 7.5;
-        Predicate<Student> p2 = student -> student.sex == 'm';
+
+
+//        Predicate<Student> p1 = student -> student.avgGrade > 7.5;
+//        Predicate<Student> p2 = student -> student.sex == 'm';
 //        Collections.sort(students, (s1, s2) -> s1.course - s2.course);
 
 
-        info.testStudent(students, p1.and(p2));
+//        info.testStudent(students, p1.and(p2));
 //        info.testStudent(students, s -> s.avgGrade < 30);
-        System.out.println("__________________________");
+//        System.out.println("__________________________");
 
+        Function<Student, Double> f = student -> student.avgGrade;
 
+        double res = avgOfSmth(students, f);
+        System.out.println(res);
+
+    }
+    private static double avgOfSmth(List<Student> list, Function<Student, Double> f) {
+        double result = 0;
+        for (Student st : list) {
+            result += f.apply(st);
+        }
+
+        return result / list.size();
     }
 }
 
