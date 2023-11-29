@@ -24,7 +24,7 @@ public class Test2 {
 //        System.out.println(students);
 
         students.stream()
-                .map(student -> {student.name = student.name.toUpperCase(); return student;})
+                .peek(student -> student.name = student.name.toUpperCase())
                 .filter(student -> student.sex == 'f')
                 .sorted(Comparator.comparingInt(x -> x.age))
                 .forEach(System.out::println);
