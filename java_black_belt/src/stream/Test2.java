@@ -19,9 +19,15 @@ public class Test2 {
         students.add(st4);
         students.add(st5);
 
-        students.stream().sorted(Comparator.comparing(x -> x.name)).toList().forEach(System.out::println);
+//        students.stream().sorted(Comparator.comparing(x -> x.name)).toList().forEach(System.out::println);
 
-        System.out.println(students);
+//        System.out.println(students);
+
+        students.stream()
+                .map(student -> {student.name = student.name.toUpperCase(); return student;})
+                .filter(student -> student.sex == 'f')
+                .sorted(Comparator.comparingInt(x -> x.age))
+                .forEach(System.out::println);
 
 //        List<Student> collect = students.stream().filter(student -> student.age > 22 && student.avgGrade < 7.2).toList();
 //        System.out.println(collect);
