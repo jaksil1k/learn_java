@@ -1,6 +1,7 @@
 package stream;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,8 +19,12 @@ public class Test2 {
         students.add(st4);
         students.add(st5);
 
-        List<Student> collect = students.stream().filter(student -> student.age > 22 && student.avgGrade < 7.2).toList();
-        System.out.println(collect);
+        students.stream().sorted(Comparator.comparing(x -> x.name)).toList().forEach(System.out::println);
+
+        System.out.println(students);
+
+//        List<Student> collect = students.stream().filter(student -> student.age > 22 && student.avgGrade < 7.2).toList();
+//        System.out.println(collect);
     }
 }
 
