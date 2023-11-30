@@ -1,7 +1,11 @@
 package stream;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Test9 {
     public static void main(String[] args) {
@@ -17,19 +21,29 @@ public class Test9 {
         students.add(st4);
         students.add(st5);
 
-        Student student1 = students.stream().min(Comparator.comparing(student -> student.age)).get();
-        System.out.println(student1);
 
+        List<Integer> collect = students.stream().mapToInt(value -> value.course).boxed().collect(Collectors.toList());
+        System.out.println(collect);
 
-        Student student2 = students.stream().max(Comparator.comparing(student -> student.age)).get();
-        System.out.println(student2);
+        int sum = students.stream().mapToInt(value -> value.course).sum();
+        System.out.println(sum);
 
-        System.out.println("---------------------");
+        double avg = students.stream().mapToInt(value -> value.course).average().getAsDouble();
+        System.out.println(avg);
 
-        students.stream().filter(student -> student.age > 20).limit(2).forEach(System.out::println);
-
-        System.out.println("---------------------");
-
-        students.stream().filter(student -> student.age > 20).skip(2).forEach(System.out::println);
+//        Student student1 = students.stream().min(Comparator.comparing(student -> student.age)).get();
+//        System.out.println(student1);
+//
+//
+//        Student student2 = students.stream().max(Comparator.comparing(student -> student.age)).get();
+//        System.out.println(student2);
+//
+//        System.out.println("---------------------");
+//
+//        students.stream().filter(student -> student.age > 20).limit(2).forEach(System.out::println);
+//
+//        System.out.println("---------------------");
+//
+//        students.stream().filter(student -> student.age > 20).skip(2).forEach(System.out::println);
     }
 }
