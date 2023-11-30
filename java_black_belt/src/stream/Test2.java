@@ -3,6 +3,7 @@ package stream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Test2 {
@@ -23,11 +24,18 @@ public class Test2 {
 
 //        System.out.println(students);
 
-        students.stream()
+//        students.stream()
+//                .peek(student -> student.name = student.name.toUpperCase())
+//                .filter(student -> student.sex == 'f')
+//                .sorted(Comparator.comparingInt(x -> x.age))
+//                .forEach(System.out::println);
+
+        Student student1 = students.stream()
                 .peek(student -> student.name = student.name.toUpperCase())
                 .filter(student -> student.sex == 'f')
                 .sorted(Comparator.comparingInt(x -> x.age))
-                .forEach(System.out::println);
+                .findFirst().get();
+        System.out.println(student1);
 
 //        List<Student> collect = students.stream().filter(student -> student.age > 22 && student.avgGrade < 7.2).toList();
 //        System.out.println(collect);
